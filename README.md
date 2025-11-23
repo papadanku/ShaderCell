@@ -2,6 +2,40 @@
 
 This project provides special files to help you create a custom AI assistants for working with ReShadeFX, a tool used to change how games look.
 
+## How GeminiFX Uses Its Knowledge and "RAG"
+
+The GeminiFX project aims to be a specialised AI assistant for creating ReShadeFX shaders. It does this by using a special collection of information (its "knowledge base") and a technique called Retrieval Augmented Generation (RAG).
+
+### What `Source/Instructions.md` Does
+
+The `Source/Instructions.md` file is like the AI's main rulebook. It tells the AI:
+
+- **Who it is (Persona)**: It makes the AI act like a "ReShadeFX shader author." This means it will always be precise, use correct code, and explain things technically.
+- **What to do (Task)**: It lists the AI's main jobs, such as writing shader code, fixing your code, explaining shader concepts, showing off ReShadeFX features, and turning your ideas into working shader logic.
+- **What to know (Context)**: Most importantly, it points the AI to the files in the `Source/Knowledge` folder and tells it that *only* the information in those files is true and correct. This is a key part of how RAG works.
+
+### What the `Source/Knowledge` Folder Contains
+
+This folder holds all the specific documents and examples that make up the AI's expertise in ReShadeFX. These include:
+
+- **`REFERENCE.md`**: This is the main guide for the ReShadeFX language. It explains its unique code rules, special commands (macros), how to use textures and samplers, variables, and built-in functions.
+- **`windows-win32-direct3dhlsl.pdf`**: This PDF teaches the basics of High-Level Shading Language (HLSL), which ReShadeFX is built upon. It covers general code structure and how different parts of a shader work.
+- **`ReShade.fxh`**: This is an important file with helpful functions and settings, especially for accessing and configuring the "depth buffer" (which helps shaders understand how far away objects are).
+- **`Examples.txt`**: This file contains real, complete examples of ReShadeFX shaders. These examples show you how to create different visual effects and follow good coding practices.
+
+### What is Retrieval Augmented Generation (RAG)?
+
+Imagine an AI that knows a lot, but sometimes makes things up or gives old information. RAG helps fix this. It's a method where an AI first **looks up** information from a trusted source (like a library) and then uses that information to **create** its answer. This makes the AI's responses much more accurate, less likely to invent facts, and very specific to the topic.
+
+### How GeminiFX Uses RAG for Shader Help
+
+GeminiFX uses RAG by telling the AI (through `Source/Instructions.md`) to treat the files in the `Source/Knowledge` folder as a primary source of information. When you ask the AI a question or for help with a shader:
+
+1. **It Looks Up (Retrieves)**: The AI searches through `REFERENCE.md`, `windows-win32-direct3dhlsl.pdf`, `ReShade.fxh`, and `Examples.txt` to find the most relevant information for your request.
+2. **It Creates an Answer (Augments)**: Then, it uses this found information to build its response. This ensures that any shader code it generates, explanations it gives, or debugging advice it offers is correct, follows the rules of ReShadeFX, and is based on solid facts.
+
+This RAG approach makes GeminiFX a highly specialized and dependable expert for ReShadeFX shader development, always relying on verified documents instead of just general knowledge.
+
 ## Install Instructions (Google Gemini)
 
 This guide helps you get your GeminiFX files ready for use with Google's Gemini platform to create your own specialized AI assistant.
@@ -99,37 +133,3 @@ If you prefer to use your AI assistant without an internet connection, you can s
 2. Choose the GPT4All AI model you want to use.
 3. Click the `Clone` button to make a copy of the model's settings that you can change.
 4. In the `System Message` box, copy and paste the entire content of the `Source/Instructions.md` file. This will teach your local GPT4All model to act like the GeminiFX expert, just like the online version.
-
-## How GeminiFX Uses Its Knowledge and "RAG"
-
-The GeminiFX project aims to be a specialised AI assistant for creating ReShadeFX shaders. It does this by using a special collection of information (its "knowledge base") and a technique called Retrieval Augmented Generation (RAG).
-
-### What `Source/Instructions.md` Does
-
-The `Source/Instructions.md` file is like the AI's main rulebook. It tells the AI:
-
-- **Who it is (Persona)**: It makes the AI act like a "ReShadeFX shader author." This means it will always be precise, use correct code, and explain things technically.
-- **What to do (Task)**: It lists the AI's main jobs, such as writing shader code, fixing your code, explaining shader concepts, showing off ReShadeFX features, and turning your ideas into working shader logic.
-- **What to know (Context)**: Most importantly, it points the AI to the files in the `Source/Knowledge` folder and tells it that *only* the information in those files is true and correct. This is a key part of how RAG works.
-
-### What the `Source/Knowledge` Folder Contains
-
-This folder holds all the specific documents and examples that make up the AI's expertise in ReShadeFX. These include:
-
-- **`REFERENCE.md`**: This is the main guide for the ReShadeFX language. It explains its unique code rules, special commands (macros), how to use textures and samplers, variables, and built-in functions.
-- **`windows-win32-direct3dhlsl.pdf`**: This PDF teaches the basics of High-Level Shading Language (HLSL), which ReShadeFX is built upon. It covers general code structure and how different parts of a shader work.
-- **`ReShade.fxh`**: This is an important file with helpful functions and settings, especially for accessing and configuring the "depth buffer" (which helps shaders understand how far away objects are).
-- **`Examples.txt`**: This file contains real, complete examples of ReShadeFX shaders. These examples show you how to create different visual effects and follow good coding practices.
-
-### What is Retrieval Augmented Generation (RAG)?
-
-Imagine an AI that knows a lot, but sometimes makes things up or gives old information. RAG helps fix this. It's a method where an AI first **looks up** information from a trusted source (like a library) and then uses that information to **create** its answer. This makes the AI's responses much more accurate, less likely to invent facts, and very specific to the topic.
-
-### How GeminiFX Uses RAG for Shader Help
-
-GeminiFX uses RAG by telling the AI (through `Source/Instructions.md`) to treat the files in the `Source/Knowledge` folder as a primary source of information. When you ask the AI a question or for help with a shader:
-
-1. **It Looks Up (Retrieves)**: The AI searches through `REFERENCE.md`, `windows-win32-direct3dhlsl.pdf`, `ReShade.fxh`, and `Examples.txt` to find the most relevant information for your request.
-2. **It Creates an Answer (Augments)**: Then, it uses this found information to build its response. This ensures that any shader code it generates, explanations it gives, or debugging advice it offers is correct, follows the rules of ReShadeFX, and is based on solid facts.
-
-This RAG approach makes GeminiFX a highly specialized and dependable expert for ReShadeFX shader development, always relying on verified documents instead of just general knowledge.
