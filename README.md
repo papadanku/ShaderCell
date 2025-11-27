@@ -1,10 +1,10 @@
-# GeminiFX
+# ArtificialFX
 
 This project provides special files to help you create a custom AI assistants for working with ReShadeFX, a tool used to change how games look.
 
-## How GeminiFX Uses Its Knowledge and "RAG"
+## How ArtificialFX Uses Its Knowledge and "RAG"
 
-The GeminiFX project aims to be a specialised AI assistant for creating ReShadeFX shaders. It does this by using a special collection of information (its "knowledge base") and a technique called Retrieval Augmented Generation (RAG).
+The ArtificialFX project aims to be a specialised AI assistant for creating ReShadeFX shaders. It does this by using a special collection of information (its "knowledge base") and a technique called Retrieval Augmented Generation (RAG).
 
 ### What `Source/Instructions.md` Does
 
@@ -27,22 +27,22 @@ This folder holds all the specific documents and examples that make up the AI's 
 
 Imagine an AI that knows a lot, but sometimes makes things up or gives old information. RAG helps fix this. It's a method where an AI first **looks up** information from a trusted source (like a library) and then uses that information to **create** its answer. This makes the AI's responses much more accurate, less likely to invent facts, and very specific to the topic.
 
-### How GeminiFX Uses RAG for Shader Help
+### How ArtificialFX Uses RAG for Shader Help
 
-GeminiFX uses RAG by telling the AI (through `Source/Instructions.md`) to treat the files in the `Source/Knowledge` folder as a primary source of information. When you ask the AI a question or for help with a shader:
+ArtificialFX uses RAG by telling the AI (through `Source/Instructions.md`) to treat the files in the `Source/Knowledge` folder as a primary source of information. When you ask the AI a question or for help with a shader:
 
 1. **It Looks Up (Retrieves)**: The AI searches through `REFERENCE.md`, `windows-win32-direct3dhlsl.pdf`, `ReShade.fxh`, and `Examples.txt` to find the most relevant information for your request.
 2. **It Creates an Answer (Augments)**: Then, it uses this found information to build its response. This ensures that any shader code it generates, explanations it gives, or debugging advice it offers is correct, follows the rules of ReShadeFX, and is based on solid facts.
 
-This RAG approach makes GeminiFX a highly specialized and dependable expert for ReShadeFX shader development, always relying on verified documents instead of just general knowledge.
+This RAG approach makes ArtificialFX a highly specialized and dependable expert for ReShadeFX shader development, always relying on verified documents instead of just general knowledge.
 
 ## Install Instructions (Google Gemini)
 
-This guide helps you get your GeminiFX files ready for use with Google's Gemini platform to create your own specialized AI assistant.
+This guide helps you get your ArtificialFX files ready for use with Google's Gemini platform to create your own specialized AI assistant.
 
 ### Step 1: Get the Files
 
-1. Go to the official project page here: **`https://papadanku.github.io/GeminiFX/`**
+1. Go to the official project page here: **`https://papadanku.github.io/ArtificialFX/`**
 2. Click the **`Download .zip`** button (it's usually in the middle at the top of the page) to download all the project files.
 3. **Unzip** the downloaded file to a place on your computer where you can easily find it.
 
@@ -50,7 +50,7 @@ This guide helps you get your GeminiFX files ready for use with Google's Gemini 
 
 1. Open **Google Gemini** in your web browser (make sure you're logged in).
 2. Look for an option to "Create a Gemini Gem" or something similar to start building a new custom AI.
-3. **Give Your AI a Name**: Choose a clear name for your new AI, like "GeminiFX Assistant."
+3. **Give Your AI a Name**: Choose a clear name for your new AI, like "ArtificialFX Assistant."
 
 ### Step 3: Give Your AI Its Instructions and Knowledge
 
@@ -75,7 +75,7 @@ Now you'll copy and paste important information into your new AI assistant's set
 
 ## Install Instructions (AnythingLLM)
 
-Use AnythingLLM to run your AI assistant locally and offline. This guide helps you set it up to use GeminiFX's ReShadeFX expertise.
+Use AnythingLLM to run your AI assistant locally and offline. This guide helps you set it up to use ArtificialFX's ReShadeFX expertise.
 
 ### Step 1: Install AnythingLLM
 
@@ -91,12 +91,12 @@ Once AnythingLLM is running:
 2. **Name Your Workspace**: Type "ReShadeFX Workspace" (or your preferred name) into the prompt.
 3. **Save**: Press "Save" to create the workspace.
 
-### Step 3: Add GeminiFX Knowledge to AnythingLLM
+### Step 3: Add ArtificialFX Knowledge to AnythingLLM
 
-Now, add the GeminiFX knowledge files to your "ReShadeFX Workspace":
+Now, add the ArtificialFX knowledge files to your "ReShadeFX Workspace":
 
 1. **Upload Files**: In your workspace, locate and click the upload icon. It's next to the workspace name ("ReShadeFX Workspace") and the gear icon.
-2. **Drag and Drop**: Drag all files from your GeminiFX project's `Source/Knowledge` folder into the upload area.
+2. **Drag and Drop**: Drag all files from your ArtificialFX project's `Source/Knowledge` folder into the upload area.
 3. **Select Files**: Confirm the selected files within the upload box.
 4. **Move to Workspace**: Click the white "Move to Workspace" button at the bottom of the box.
 5. **Embed Files**: AnythingLLM will now embed these files using its chosen embedding engine. This may take some time.
@@ -104,11 +104,11 @@ Now, add the GeminiFX knowledge files to your "ReShadeFX Workspace":
 
 ### Step 4: Configure Your System Prompt
 
-Finally, instruct AnythingLLM on how to use the GeminiFX knowledge:
+Finally, instruct AnythingLLM on how to use the ArtificialFX knowledge:
 
 1. **Open Chat Settings**: Click the gear icon to the right of your workspace name and the upload icon.
 2. **Access System Prompt**: Go to `Chat Settings`, then select `System Prompt`. You will see a default prompt.
-3. **Copy Instructions**: Navigate to your GeminiFX project folder and open `Source/Instructions.md`. Copy all its content.
+3. **Copy Instructions**: Navigate to your ArtificialFX project folder and open `Source/Instructions.md`. Copy all its content.
 4. **Paste Instructions**: Paste the copied text into AnythingLLM's `System Prompt` box, replacing any existing content.
 
 ## Install Instructions (GPT4All)
@@ -124,7 +124,7 @@ If you prefer to use your AI assistant without an internet connection, you can s
 ### Step 2: Add Knowledge Files to GPT4All
 
 1. In GPT4All, go to **Settings > LocalDocs > LocalDocs Setting**.
-2. Add the `Source/Knowledge` folder (from where you unzipped the GeminiFX project) to the list of folders GPT4All should look at. This will allow GPT4All to read `Examples.txt`, `REFERENCE.md`, `ReShade.fxh`, and `windows-win32-direct3dhlsl.pdf`.
+2. Add the `Source/Knowledge` folder (from where you unzipped the ArtificialFX project) to the list of folders GPT4All should look at. This will allow GPT4All to read `Examples.txt`, `REFERENCE.md`, `ReShade.fxh`, and `windows-win32-direct3dhlsl.pdf`.
 3. Start the "indexing" process in GPT4All. This makes the files searchable by the AI.
 
 ### Step 3: Configure Your GPT4All AI Model
@@ -132,4 +132,4 @@ If you prefer to use your AI assistant without an internet connection, you can s
 1. Go to **Settings > Model > Model Settings**.
 2. Choose the GPT4All AI model you want to use.
 3. Click the `Clone` button to make a copy of the model's settings that you can change.
-4. In the `System Message` box, copy and paste the entire content of the `Source/Instructions.md` file. This will teach your local GPT4All model to act like the GeminiFX expert, just like the online version.
+4. In the `System Message` box, copy and paste the entire content of the `Source/Instructions.md` file. This will teach your local GPT4All model to act like the ArtificialFX expert, just like the online version.
